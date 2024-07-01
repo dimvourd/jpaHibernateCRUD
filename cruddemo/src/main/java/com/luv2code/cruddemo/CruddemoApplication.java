@@ -18,8 +18,9 @@ public class CruddemoApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO dao){
 		return runner -> {
 			System.out.println("Hello World.");
-
-			createStudent(dao);
+			System.out.println(
+				findStudentById( 1L, dao)
+				);
 		};
 	}
 
@@ -38,5 +39,10 @@ public class CruddemoApplication {
 		System.out.println("Save and return DB object: " +
 			dao.saveAndReturnObj(student2)
 		);
+	}
+
+	public  Student findStudentById(Long id, StudentDAO dao){
+
+		return dao.findById(id);
 	}
 }
